@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Gtec.UnityInterface;
 using UnityEngine;
+using UnityEngine.Events;
 using static Gtec.Chain.Common.Nodes.InputNodes.ChannelQuality;
 
 public class EEGManager : MonoBehaviour
 {
     public static EEGManager Instance { get; private set; }
+    private string serialName = "UN-0000.00.00"; //EEG Headset name is UN-2023.03.17, for testing can use UN-0000.00.00
+    [SerializeField] private Device BciDevice;
+    public UnityEvent OnConnect;
 
     public bool IsVisual;
     public bool IsMotor;
@@ -26,8 +30,14 @@ public class EEGManager : MonoBehaviour
 
     private void Start()
     {
-        //Testing
-        GameObject.FindObjectOfType<DeviceDialogUI>().ConnectEEG();
+        ConnectToDevice();
+    }
+
+    public void ConnectToDevice()
+    {
+        BciDevice.Connect(serialName);
+
+        OnConnect.Invoke();
     }
 
     #region Signal Quality Pipeline Events
