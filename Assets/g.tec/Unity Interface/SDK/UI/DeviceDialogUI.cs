@@ -94,5 +94,15 @@ namespace Gtec.UnityInterface
                 OnDisconnect.Invoke();
             }
         }
+
+        public void ConnectEEG()
+        {
+            string serial = "UN-2023.03.17";
+
+            if (_bci != null)
+                _bci.Connect(serial);
+
+            OnConnect.Invoke(serial);
+        }
     }
 }
