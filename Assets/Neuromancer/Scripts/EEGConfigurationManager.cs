@@ -23,7 +23,10 @@ public class EEGConfigurationManager : MonoBehaviour
     public Gtec.UnityInterface.ERPPipeline _erpPipeline;
     public GameObject GameFlowManager;
     public GameObject BciConfiguration;
-    public GameObject BciGameplay;
+    //public GameObject BciGameplay;
+
+    public Device Device;
+    public EEGManager EEGManager;
 
     public List<GameObject> SpinningNeurons = new List<GameObject>();
 
@@ -32,6 +35,8 @@ public class EEGConfigurationManager : MonoBehaviour
     public UnityEngine.Color ChannelBad;
     public SignalQualityPipeline _signalQualityPipeline;
     public List<Image> Images = new List<Image>();
+
+    public List<GameObject> ObjectsToDisable = new List<GameObject>();  
 
     private void Awake()
     {
@@ -97,9 +102,15 @@ public class EEGConfigurationManager : MonoBehaviour
     private void StartGameFlow()
     {
         _erpParadigm.StopParadigm();
+        //BciConfiguration.SetActive(false);
+        //BciGameplay.SetActive(true);
+        //EEGManager.Reconnect(Device);
+        BciConfiguration.transform.position = new Vector3(0f, 2f, 0f);
+        foreach(GameObject go in ObjectsToDisable)
+        {
+            go.SetActive(false);
+        }
         GameFlowManager.SetActive(true);
-        BciConfiguration.SetActive(false);
-        BciGameplay.SetActive(true);
     }
 
     private void OnSignalQualityAvailable(List<ChannelStates> signalQuality)
@@ -112,5 +123,10 @@ public class EEGConfigurationManager : MonoBehaviour
                 Images[i].color = ChannelBad;
             Debug.Log("Channel " + i + ": " + signalQuality[i].ToString());
         }
+    }
+
+    public void IsSimulating()
+    {
+        CheckForTest1 = false;
     }
 }

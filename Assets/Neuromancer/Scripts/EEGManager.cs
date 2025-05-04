@@ -9,7 +9,7 @@ public class EEGManager : MonoBehaviour
     public static EEGManager Instance { get; private set; }
     private string serialName = "UN-2023.03.17"; //EEG Headset name is UN-2023.03.17, for testing can use UN-0000.00.00
     [SerializeField] private Device BciDevice;
-    public UnityEvent OnConnect;
+    public EEGConfigurationManager ConfigManager;
 
     public bool IsSimulating;
     public bool IsVisual;
@@ -39,6 +39,16 @@ public class EEGManager : MonoBehaviour
     {
         BciDevice.Connect(serialName);
 
-        OnConnect.Invoke();
+        if (IsSimulating)
+            ConfigManager.IsSimulating();
+        ConfigManager.gameObject.SetActive(true);
     }
+
+    //public void Reconnect(Device device)
+    //{
+    //    Debug.Log("Attempting to reconnect...");
+    //    BciDevice.Disconnect();
+    //    BciDevice = device;
+    //    BciDevice.Connect(serialName);
+    //}
 }
