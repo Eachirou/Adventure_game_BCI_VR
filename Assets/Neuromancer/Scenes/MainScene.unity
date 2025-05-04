@@ -798,6 +798,12 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8890979730136844276, guid: 8a4ac95e47691d74a9fe02a167a19c96, type: 3}
+      propertyPath: m_text
+      value: 'Wait 30 seconds.
+
+        Look at the center icon.'
+      objectReference: {fileID: 0}
     - target: {fileID: 9003685121678996422, guid: 8a4ac95e47691d74a9fe02a167a19c96, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0.9088
@@ -1418,6 +1424,10 @@ PrefabInstance:
     - target: {fileID: 3338044679595771143, guid: 0f48da74de578fe43b63f1de43952bbc, type: 3}
       propertyPath: CheckForTest1
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3338044679595771143, guid: 0f48da74de578fe43b63f1de43952bbc, type: 3}
+      propertyPath: WaitTimeTest2
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3338044679595771143, guid: 0f48da74de578fe43b63f1de43952bbc, type: 3}
       propertyPath: ConfigurationUI

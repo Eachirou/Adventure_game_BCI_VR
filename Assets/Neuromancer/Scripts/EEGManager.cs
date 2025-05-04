@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class EEGManager : MonoBehaviour
 {
     public static EEGManager Instance { get; private set; }
-    private string serialName = "UN-0000.00.00"; //EEG Headset name is UN-2023.03.17, for testing can use UN-0000.00.00
+    private string serialName = "UN-2023.03.17"; //EEG Headset name is UN-2023.03.17, for testing can use UN-0000.00.00
     [SerializeField] private Device BciDevice;
     public UnityEvent OnConnect;
 
